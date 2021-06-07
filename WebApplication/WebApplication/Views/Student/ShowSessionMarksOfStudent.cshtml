@@ -1,0 +1,37 @@
+@model LinkedList<Model.SessionMarkModel>
+@{
+    ViewData["Title"] = "Courses of student";
+    int i = 0;
+}
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Mark</th>
+    <th scope="col">With</th>
+    <th scope="col">To</th>
+    <th scope="col">Name</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Mark
+            </td>
+            <td>
+                @item.With
+            </td>
+            <td>
+                @item.To
+            </td>
+            <td>
+                @item.NameCourse
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

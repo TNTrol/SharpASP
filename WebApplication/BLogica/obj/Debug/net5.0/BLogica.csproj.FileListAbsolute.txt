@@ -1,0 +1,15 @@
+/home/tntrol/RiderProjects/WebApplication/BLogica/bin/Debug/net5.0/BLogica.deps.json
+/home/tntrol/RiderProjects/WebApplication/BLogica/bin/Debug/net5.0/BLogica.dll
+/home/tntrol/RiderProjects/WebApplication/BLogica/bin/Debug/net5.0/ref/BLogica.dll
+/home/tntrol/RiderProjects/WebApplication/BLogica/bin/Debug/net5.0/BLogica.pdb
+/home/tntrol/RiderProjects/WebApplication/BLogica/bin/Debug/net5.0/Core.dll
+/home/tntrol/RiderProjects/WebApplication/BLogica/bin/Debug/net5.0/Core.pdb
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.csprojAssemblyReference.cache
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.GeneratedMSBuildEditorConfig.editorconfig
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.AssemblyInfoInputs.cache
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.AssemblyInfo.cs
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.csproj.CoreCompileInputs.cache
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.csproj.CopyComplete
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.dll
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/ref/BLogica.dll
+/home/tntrol/RiderProjects/WebApplication/BLogica/obj/Debug/net5.0/BLogica.pdb

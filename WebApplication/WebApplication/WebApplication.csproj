@@ -1,0 +1,77 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\.npmignore" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\bower.json" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\dist\select2-bootstrap.css" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\dist\select2-bootstrap.min.css" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\.npmignore" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\4.0.0.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\4.0.1.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\4.0.2.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\4.0.3.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\css\bootstrap.min.css" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\css\gh-pages.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\css\select2-bootstrap.css" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\favicon.ico" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\fonts\glyphicons-halflings-regular.eot" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\fonts\glyphicons-halflings-regular.svg" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\fonts\glyphicons-halflings-regular.ttf" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\fonts\glyphicons-halflings-regular.woff" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\fonts\glyphicons-halflings-regular.woff2" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\images\logo.png" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\index.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\js\anchor.min.js" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\js\bootstrap.min.js" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\js\respond.min.js" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_config.yml" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_includes\footer-links.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_includes\footer.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_includes\head.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_includes\navbar.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_includes\scripts.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_includes\select2-select.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_layouts\default.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_layouts\minimal.html" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_alert.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_anchorjs.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_buttons.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_common.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_extends.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_footer.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_home.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_jumbotron.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_mixins.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_navbar.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_select2-result-repository.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\docs\_sass\_variables.sass" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\Gruntfile.js" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\LICENSE" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\package.json" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\README.md" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\src\build.less" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\src\build.scss" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\src\select2-bootstrap.less" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\src\select2-bootstrap.scss" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\tests\less_test.js" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\tests\scss_test.js" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\tests\support\less.patch" />
+      <Content Include="wwwroot\node_modules\select2-bootstrap-theme\tests\support\scss.patch" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Solution2\BLL\BLL.csproj" />
+      <ProjectReference Include="..\..\Solution2\Core\Core.csproj" />
+      <ProjectReference Include="..\BLogica\BLogica.csproj" />
+      <ProjectReference Include="..\Core\Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Views\Lecturer" />
+    </ItemGroup>
+
+</Project>

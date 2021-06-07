@@ -1,0 +1,12 @@
+/home/tntrol/RiderProjects/University/Faculty/bin/Debug/net5.0/Faculty.deps.json
+/home/tntrol/RiderProjects/University/Faculty/bin/Debug/net5.0/Faculty.dll
+/home/tntrol/RiderProjects/University/Faculty/bin/Debug/net5.0/ref/Faculty.dll
+/home/tntrol/RiderProjects/University/Faculty/bin/Debug/net5.0/Faculty.pdb
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/Faculty.csprojAssemblyReference.cache
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/Faculty.GeneratedMSBuildEditorConfig.editorconfig
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/Faculty.AssemblyInfoInputs.cache
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/Faculty.AssemblyInfo.cs
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/Faculty.csproj.CoreCompileInputs.cache
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/Faculty.dll
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/ref/Faculty.dll
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/net5.0/Faculty.pdb

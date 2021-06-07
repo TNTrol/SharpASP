@@ -1,0 +1,9 @@
+/home/tntrol/RiderProjects/University/Faculty/bin/Debug/netstandard2.1/Faculty.deps.json
+/home/tntrol/RiderProjects/University/Faculty/bin/Debug/netstandard2.1/Faculty.dll
+/home/tntrol/RiderProjects/University/Faculty/bin/Debug/netstandard2.1/Faculty.pdb
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/netstandard2.1/Faculty.csprojAssemblyReference.cache
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/netstandard2.1/Faculty.AssemblyInfoInputs.cache
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/netstandard2.1/Faculty.AssemblyInfo.cs
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/netstandard2.1/Faculty.csproj.CoreCompileInputs.cache
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/netstandard2.1/Faculty.dll
+/home/tntrol/RiderProjects/University/Faculty/obj/Debug/netstandard2.1/Faculty.pdb

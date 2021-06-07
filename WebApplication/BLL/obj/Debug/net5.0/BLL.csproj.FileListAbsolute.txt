@@ -1,0 +1,5 @@
+/home/tntrol/RiderProjects/Solution2/BLL/obj/Debug/net5.0/BLL.csprojAssemblyReference.cache
+/home/tntrol/RiderProjects/Solution2/BLL/obj/Debug/net5.0/BLL.GeneratedMSBuildEditorConfig.editorconfig
+/home/tntrol/RiderProjects/Solution2/BLL/obj/Debug/net5.0/BLL.AssemblyInfoInputs.cache
+/home/tntrol/RiderProjects/Solution2/BLL/obj/Debug/net5.0/BLL.AssemblyInfo.cs
+/home/tntrol/RiderProjects/Solution2/BLL/obj/Debug/net5.0/BLL.csproj.CoreCompileInputs.cache

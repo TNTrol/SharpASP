@@ -1,0 +1,31 @@
+@model LinkedList<Model.MarkModel>
+
+@{
+    ViewData["Title"] = "Courses of student";
+    int i = 0;
+}
+
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Date</th>
+    <th scope="col">Mark</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                @item.Mark
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

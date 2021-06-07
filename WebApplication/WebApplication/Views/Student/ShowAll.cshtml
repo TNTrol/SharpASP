@@ -1,0 +1,47 @@
+@using Model
+
+@{
+    ViewData["Title"] = "Student";
+    int i = 0;
+}
+@if (ViewData["Students"] != null)
+{
+    <table id="table" class="text-center table table-striped">
+        <thead class="thead-light">
+        <th scope="col">№</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+        </thead>
+        <tbody>
+        @foreach (var item in ViewData["Students"] as LinkedList<StudentModel>)
+        {
+            i++;
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.Id" data-target="#addingModal">
+                        Edit
+                    </button>
+
+                    @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                            Details
+                        </button>*@
+
+                    <a href="~/Student/ShowCourseOfStudent/@item.Id" class="btn btn-outline-danger">
+                        Corses
+                    </a>
+                    <a href="~/Item/RemoveItem/?id=@item.Id" class="btn btn-outline-danger">
+                        Remove
+                    </a>
+
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
