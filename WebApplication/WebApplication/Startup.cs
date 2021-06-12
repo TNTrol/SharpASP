@@ -34,10 +34,7 @@ namespace WebApplication
                 public void ConfigureServices(IServiceCollection services)
                 {
                     services.AddControllersWithViews();
-                    //AddAllGenericTypes(services,typeof(IRepository<>), new[]{typeof(ApplicationContext).GetTypeInfo().Assembly});
                     services.AddTransient<IStudentService, StudentService>();
-                    //services.AddTransient<ILecturerService, LecturerService>();
-                    //services.AddTransient<IAdminService, AdminService>();
                     services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
                     services.AddDbContext<ApplicationContext>(options => options.UseMySql("Host=localhost;Port=3306;Database=mydb_sharp;Username=tntrol;Password=password",
                         new MySqlServerVersion(new Version(8, 0, 11))));
