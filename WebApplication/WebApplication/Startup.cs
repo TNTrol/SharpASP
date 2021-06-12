@@ -45,18 +45,14 @@ namespace WebApplication
                 
                 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
                 {
-                    //loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "log.txt"));
-                    //var logger = loggerFactory.CreateLogger("FileLogger");
                     app.UseStaticFiles();
                     if (env.IsDevelopment())
                     {
-                        //logger.LogInformation("Using developer exception page", null);
                         app.UseDeveloperExceptionPage();
                     }
                     else
                     {
                         app.UseExceptionHandler("/Item/Error");
-                        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                         app.UseHsts();
                     }
         
