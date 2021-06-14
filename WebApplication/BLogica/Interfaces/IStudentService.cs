@@ -15,5 +15,7 @@ namespace Interfaces
         IList<CourseDTO> ShowAllCoursesOfStudent(int idStudent);
 
         IList<StudentDTO> ShowAllStudents();
+
+        public IList<StudentDTO> ShowAllWithoutStudentsOfCourse(int idCourse);
     }
 }

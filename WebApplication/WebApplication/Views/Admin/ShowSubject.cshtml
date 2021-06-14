@@ -1,0 +1,88 @@
+@model LinkedList<Model.SubjectModel>
+
+@{
+    ViewData["Title"] = "Student";
+    int i = 0;
+}
+<div class="form-inline">
+    <form class="form-inline" method="post" action="~/Admin/AddSubject">
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="name" class="sr-only" >Name of subject</label>
+            <input type="text" class="form-control" id="name" name = "name" placeholder="Name">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Добавить предмет</button>
+    </form>
+    <div id="editor" class="form-inline">
+    
+        <div class="form-group mx-sm-3 mb-2">
+            <label for="new_name" class="sr-only" >Name of subject</label>
+            <input type="text" class="form-control" id="new_name" name = "new_name" placeholder="Name">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Изменить имя предмета</button>
+        <label class="sr-only"  id = "status"></label>
+    </div>
+</div>
+<table id="table" class="text-center table table-striped">
+        <thead class="thead-light">
+        <th scope="col">№</th>
+        <th scope="col">Name</th>
+        <th scope="col">Action</th>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            i++;
+            <tr>
+                <td>
+                    @i
+                </td>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.Id" data-target="#addingModal" onclick="toggle(@i, @item.Id)">
+                        Edit
+                    </button>
+                    
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+<script>
+document.getElementById('editor').style.display = "none";
+var index = -1;
+var _id = -1;
+
+function toggle(n, id) {
+    _id = id;
+    if (index === n){
+            document.getElementById('editor').style.display = "none";
+            index = -1;
+            return;
+        }
+    index = n;
+    document.getElementById('editor').style.display = "";
+    $("#new_name").val(document.getElementById("table").rows[n].cells[1].innerHTML);
+    //$("#new_name").attr("placeholder", document.getElementById("table").rows[n].cells[1].innerHTML);
+}
+
+function send_post()
+{
+    var name = $("#new_name").val();
+    name = name.replace(/ +/g, ' ').trim();
+    
+    $.post( '/Admin/EditSubject?name=' + name + "&id=" + _id, {data: "name"},function( data, status ) {
+    		    if(status == 'success')
+    		    {
+                    console.log("ok");
+                    document.getElementById("table").rows[index].cells[1].innerHTML = name;
+                    toggle(index, _id);
+                    $("#status").val("");
+                }else{
+                    console.log("bad")
+                    $("#status").val("bad name");
+                }
+            });
+}
+</script>

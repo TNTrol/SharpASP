@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DTO;
 using Faculty.Entities;
 using Faculty.Interfaces;
 using Faculty.Repositories;
@@ -77,6 +78,51 @@ namespace Services
                 return false;
             student.Name = name;
             _studentRepository.Update(student);
+            return true;
+        }
+
+        public IList<SubjectDTO> ShowAllSubjects()
+        {
+            List<Subject> subjects = _subjectRepository.GetAll().ToList();
+            List<SubjectDTO> resSubject = new List<SubjectDTO>();
+            foreach (var subject in subjects)
+            {
+                resSubject.Add(new SubjectDTO(){Name = subject.Name, Id = subject.Id});
+            }
+
+            return resSubject;
+        }
+
+        public IList<SemesterDTO> ShowAllSemesters()
+        {
+            IList<Semester> semesters = _semesterRepository.GetAll().ToList();
+            List<SemesterDTO> resSemesters = new List<SemesterDTO>();
+            foreach (var semester in semesters)
+            {
+                resSemesters.Add(new SemesterDTO(){Id = semester.Id, To = semester.To, With =  semester.With});
+            }
+
+            return resSemesters;
+        }
+
+        public bool ChangeSubject(SubjectDTO s)
+        {
+            Subject subject = _subjectRepository.Get(s.Id);
+            if (subject == null)
+                return false;
+            subject.Name = s.Name;
+            _subjectRepository.Update(subject);
+            return true;
+        }
+
+        public bool ChangeSemester(SemesterDTO semesterDto)
+        {
+            Semester semester = _semesterRepository.Get(semesterDto.Id);
+            if (semester == null)
+                return false;
+            semester.To = semesterDto.To;
+            semester.With = semesterDto.With;
+            _semesterRepository.Update(semester);
             return true;
         }
     }

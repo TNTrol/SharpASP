@@ -1,0 +1,73 @@
+@using Model
+@model LinkedList<Model.CourseLecturerModel>
+
+@{
+    ViewData["Title"] = "Course of Lecturer";
+    int i = 0;
+    int id = (int) ViewData["idLecturer"];
+}
+
+<div class="form-inline">
+    <form method="post" action="~/Lecturer/AddCourse">
+        <input name="idLecturer" type="hidden" value="@ViewData["idLecturer"]" />
+        <select id="typeFilter1" class="form-control" name="idSubject">
+            <option value="0">Select subject</option>
+            @foreach (var subject in ViewData["subject"] as LinkedList<SubjectModel>)
+            {
+                <option value="@subject.Id"> @subject.Name</option>
+            }
+        </select>
+                <select id="typeFilter2" class="form-control" name="idSemester">
+                    <option value="0">Select semester</option>
+                    @foreach (var subject in ViewData["semester"] as LinkedList<SemesterModel>)
+                    {
+                        <option value="@subject.Id"> @subject.With - @subject.To</option>
+                    }
+                </select>
+        <button type="submit" class="btn btn-primary mb-2">Add mark</button>
+    </form>
+</div>
+
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Name</th>
+    <th scope="col">With</th>
+    <th scope="col">To</th>
+    <th scope="col">Action</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.With
+            </td>
+            <td>
+                @item.To
+            </td>
+            <td>
+                <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.Id" data-target="#addingModal">
+                    Edit
+                </button>
+            
+                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                                        Details
+                                    </button>*@
+            
+                <a href="~/Lecturer/ShowFollowingStudent/?idCourse=@item.Id&idLecturer=@id" class="fill-modal btn btn-outline-primary">
+                    Students
+                </a>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

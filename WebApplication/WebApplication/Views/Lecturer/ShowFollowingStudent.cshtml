@@ -1,0 +1,49 @@
+@model LinkedList<Model.StudentModel>
+
+@{
+    ViewData["Title"] = "Students";
+    int i = 0;
+}
+<div class="form-inline">
+<a href="~/Lecturer/AddNewFollowingStudent/?idCourse=@ViewData["idCourse"]&idLecturer=@ViewData["idLecturer"]" class="fill-modal btn btn-outline-primary">
+    Add New Student
+</a>
+</div>
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Name</th>
+    <th scope="col">Action</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                                        Details
+                                    </button>*@
+            
+                <a href="~/Lecturer/ShowMarksFollowingStudent/?idStudent=@item.Id&idCourse=@ViewData["idCourse"]" class="fill-modal btn btn-outline-primary">
+                    Marks
+                </a>
+                
+                            <form method="post" action="~/Lecturer/DeleteFollowingStudent">
+                                    <input name="idCourse" type="hidden" value="@ViewData["idCourse"]" />
+                                    <input name="idStudent" type="hidden" value="@item.Id" />
+                                    <input name="idLecturer" type="hidden" value="@ViewData["idLecturer"]" />
+                                    <button type="submit" class="fill-modal btn btn-outline-primary">Delete</button>
+                            </form>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

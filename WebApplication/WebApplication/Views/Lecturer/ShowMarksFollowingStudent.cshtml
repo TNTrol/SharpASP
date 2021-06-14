@@ -1,0 +1,61 @@
+@model LinkedList<Model.MarkLecturerModel>
+@{
+    ViewData["Title"] = "Marks of Student";
+    int i = 0;
+}
+<div class="form-inline">
+    <form method="post" action="~/Lecturer/PutMark">
+        <input name="Course" type="hidden" value="@ViewData["course"]" />
+        <input name="idStudent" type="hidden" value="@ViewData["student"]" />
+        <input name="Lecturer" type="hidden" value="1" />
+        <select id="typeFilter" class="form-control" name="Mark">
+            <option value="0">Select mark</option>
+            @for (int j = 1; j <= 5; j++)
+            {
+                <option value="@j"> @j</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary mb-2">Add mark</button>
+    </form>
+</div>
+                
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Mark</th>
+    <th scope="col">Date</th>
+    <th scope="col">Action</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Mark
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+
+            
+                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                                        Details
+                                    </button>*@
+            
+                            <form method="post" action="~/Lecturer/DeleteMark">
+                                    <input name="idCourse" type="hidden" value="@ViewData["course"]" />
+                                    <input name="id" type="hidden" value="@item.Id" />
+                                    <input name="idStudent" type="hidden" value="@ViewData["student"]" />
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

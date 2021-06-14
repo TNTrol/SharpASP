@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DTO;
 using Faculty.Entities;
 
 namespace Interfaces
@@ -19,5 +20,10 @@ namespace Interfaces
         IList<Student> ShowAllStudents();
 
         bool ChangeStudentById(int id, String name);
+        public IList<SubjectDTO> ShowAllSubjects();
+        public IList<SemesterDTO> ShowAllSemesters();
+        public bool ChangeSubject(SubjectDTO s);
+
+        public bool ChangeSemester(SemesterDTO semesterDto);
     }
 }

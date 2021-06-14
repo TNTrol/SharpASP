@@ -49,3 +49,12 @@
 /home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/WebApplication.genruntimeconfig.cache
 /home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Student/ShowCourseOfStudent.cshtml.g.cs
 /home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Student/ShowSessionMarksOfStudent.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Student/ShowMarksOfStudentCourse.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Lecturer/ShowCourseOfLecture.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Lecturer/ShowFollowingStudent.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Lecturer/ShowMarksFollowingStudent.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Lecturer/AddNewFollowingStudent.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Lecturer/ShowAll.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Index/Index.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Admin/ShowSubject.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Admin/ShowSemester.cshtml.g.cs

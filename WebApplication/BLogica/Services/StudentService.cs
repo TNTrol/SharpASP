@@ -32,7 +32,7 @@ namespace Services
             var marks = _followingStudentRepository.FindInclude(fs => fs.Student == student, fsp => fsp.Marks, fsp => fsp.Course.Subject).Select(fs => fs.Marks).First().ToList();
             List<MarkDTO> markdto = new List<MarkDTO>();
             foreach (var mark in marks)
-                markdto.Add(new MarkDTO(){Date = mark.Date, Mark = mark.MarkStudent});
+                markdto.Add(new MarkDTO(){Date = mark.Date, Mark = mark.MarkStudent, Id = mark.Id});
             return markdto;
         }
 
@@ -66,6 +66,19 @@ namespace Services
         public IList<StudentDTO> ShowAllStudents()
         {
             IList<Student> students = _studentRepository.GetAll().ToList();
+            IList<StudentDTO> studentDtos = new List<StudentDTO>();
+            foreach (var student in students)
+            {
+                studentDtos.Add(new StudentDTO(){Id = student.Id, Name = student.Name});
+            }
+
+            return studentDtos;
+        }
+        
+        public IList<StudentDTO> ShowAllWithoutStudentsOfCourse(int idCourse)
+        {
+            IList<Student> students = _followingStudentRepository
+                .FindInclude(s => s.Course.Id != idCourse, s => s.Student, s => s.Course).Select(s => s.Student).Distinct().ToList();
             IList<StudentDTO> studentDtos = new List<StudentDTO>();
             foreach (var student in students)
             {

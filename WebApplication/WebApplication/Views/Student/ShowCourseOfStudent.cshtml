@@ -8,7 +8,8 @@
 <table id="table" class="text-center table table-striped">
     <thead class="thead-light">
     <th scope="col">№</th>
-    <th scope="col">Name</th>
+    <th scope="col">Subject</th>
+    <th scope="col">Name of Lecturer</th>
     <th scope="col">Action</th>
     </thead>
     <tbody>
@@ -26,16 +27,8 @@
                 @item.NameLecturer
             </td>
             <td>
-                <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.Id" data-target="#addingModal">
-                    Edit
-                </button>
-
-                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
-                            Details
-                        </button>*@
-
-                <a href="~/Item/RemoveItem/?id=@item.Id" class="btn btn-outline-danger">
-                    Remove
+                <a href="~/Student/ShowMarksOfStudentCourse/?IdCourse=@item.Id&idStudent=@item.IdStudent" class="fill-modal btn btn-outline-primary">
+                    Marks
                 </a>
 
             </td>

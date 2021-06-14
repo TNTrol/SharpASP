@@ -34,7 +34,10 @@ namespace WebApplication
                 public void ConfigureServices(IServiceCollection services)
                 {
                     services.AddControllersWithViews();
+                    //AddAllGenericTypes(services,typeof(IRepository<>), new[]{typeof(ApplicationContext).GetTypeInfo().Assembly});
                     services.AddTransient<IStudentService, StudentService>();
+                    services.AddTransient<ILecturerService, LecturerService>();
+                    services.AddTransient<IAdminService, AdminService>();
                     services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
                     services.AddDbContext<ApplicationContext>(options => options.UseMySql("Host=localhost;Port=3306;Database=mydb_sharp;Username=tntrol;Password=password",
                         new MySqlServerVersion(new Version(8, 0, 11))));
@@ -45,14 +48,18 @@ namespace WebApplication
                 
                 public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
                 {
+                    //loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "log.txt"));
+                    //var logger = loggerFactory.CreateLogger("FileLogger");
                     app.UseStaticFiles();
                     if (env.IsDevelopment())
                     {
+                        //logger.LogInformation("Using developer exception page", null);
                         app.UseDeveloperExceptionPage();
                     }
                     else
                     {
                         app.UseExceptionHandler("/Item/Error");
+                        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                         app.UseHsts();
                     }
         
@@ -67,7 +74,7 @@ namespace WebApplication
                     {
                         endpoints.MapControllerRoute(
                             name: "default",
-                            pattern: "{controller=Student}/{action=Index}/{id?}");
+                            pattern: "{controller=Index}/{action=Index}/{id?}");
                     });
         
         

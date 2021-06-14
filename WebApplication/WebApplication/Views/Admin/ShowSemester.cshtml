@@ -1,0 +1,107 @@
+@model LinkedList<Model.SemesterModel>
+       
+       @{
+           ViewData["Title"] = "Semesters";
+           int i = 0;
+       }
+<div class="form-inline">
+<form  method="post" action="~/Admin/AddSemester">
+<div class="form-row mx-2 mb-2">
+    <div class="form-col mr-2">
+        <input id="StartDate" name="with" type="datetime-local"  class="form-control" placeholder="From Date"/>
+    </div>
+
+    <div class="form-col mr-2">
+        <input id="EndDate" name="to" type="datetime-local" class="form-control" placeholder="To Date"/>
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Добавить семестр</button>
+</div>
+ </form>
+ <div id="editor" class="form-inline">
+ 
+     <div class="form-col mr-2">
+             <input id="with" name="with" type="datetime-local"  class="form-control" placeholder="From Date"/>
+         </div>
+     
+         <div class="form-col mr-2">
+             <input id="to" name="to" type="datetime-local" class="form-control" placeholder="To Date"/>
+         </div>
+     <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Изменить семестр</button>
+     <label class="sr-only"  id = "status"></label>
+ </div>
+</div>
+<table id="table" class="text-center table table-striped">
+               <thead class="thead-light">
+               <th scope="col">№</th>
+               <th scope="col">With</th>
+               <th scope="col">To</th>
+               <th scope="col">Action</th>
+               </thead>
+               <tbody>
+               @foreach (var item in Model)
+               {
+                   i++;
+                   <tr>
+                       <td>
+                           @i
+                       </td>
+                       <td>
+                           @item.With
+                       </td>
+                       <td>
+                                                  @item.To
+                                              </td>
+                       <td>
+                           <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.Id" data-target="#addingModal" onclick="toggle(@i, @item.Id)">
+                               Edit
+                           </button>
+                           
+                       </td>
+                   </tr>
+               }
+               </tbody>
+           </table>
+       
+
+<script>
+document.getElementById('editor').style.display = "none";
+var index = -1;
+var _id = -1;
+
+function toggle(n, id) {
+    _id = id;
+    if (index === n){
+            document.getElementById('editor').style.display = "none";
+            index = -1;
+            return;
+        }
+    index = n;
+    document.getElementById('editor').style.display = "";
+    $("#with").val(document.getElementById("table").rows[n].cells[1].innerHTML);
+    console.log(document.getElementById("table").rows[n].cells[1].innerHTML);
+    $("#to").val(document.getElementById("table").rows[n].cells[2].innerHTML);
+    //$("#new_name").attr("placeholder", document.getElementById("table").rows[n].cells[1].innerHTML);
+}
+
+function send_post()
+{
+    var _with = $("#with").val();
+    _with = _with.replace(/ +/g, ' ').trim();
+    var _to = $("#with").val();
+    _to = _to.replace(/ +/g, ' ').trim();
+    
+    $.post( '/Admin/EditSubject?with=' + _with + "&to=" + _to + "&id=" + _id, {data: "name"},function( data, status ) {
+    		    if(status == 'success')
+    		    {
+                    console.log("ok");
+                    document.getElementById("table").rows[index].cells[1].innerHTML = _with;
+                    document.getElementById("table").rows[index].cells[2].innerHTML = _to;
+                    toggle(index, _id);
+                    $("#status").val("");
+                }else{
+                    console.log("bad")
+                    $("#status").val("bad name");
+                }
+            });
+}
+</script>

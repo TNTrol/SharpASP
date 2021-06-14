@@ -29,6 +29,7 @@ namespace Faculty.Repositories
         public void Delete(int id)
         {
             _entities.Remove(Get(id));
+            _db.SaveChanges();
         }
 
         public IEnumerable<T> Find(Func<T, bool> predicate)

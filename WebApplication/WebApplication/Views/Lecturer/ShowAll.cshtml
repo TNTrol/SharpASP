@@ -1,0 +1,107 @@
+@model LinkedList<Model.LecturerModel>
+@{
+    ViewData["Title"] = "Lecturer";
+    int i = 0;
+}
+
+<div class="form-inline">
+<form class="form-inline" method="post" action="~/Lecturer/AddNewLecturer">
+    <div class="form-group mx-sm-3 mb-2">
+        <label for="name_lecturer" class="sr-only" >Name of lecturer</label>
+        <input type="text" class="form-control" id="name_lecturer" name = "name" placeholder="Name">
+        <label for="experience" class="sr-only" >Experience</label>
+        <input type="text" class="form-control" id="experience" name = "experience" placeholder="Experience">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Добавить препода</button>
+</form>
+
+<div id="editor" class="form-inline">
+
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control" id="new_name" name = "name" placeholder="Name">
+        <input type="text" class="form-control" id="new_experience" name = "experience" placeholder="Experience">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Изменить препода</button>
+    <label class="sr-only"  id = "status"></label>
+</div>
+</div>
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Name</th>
+    <th scope="col">Experience</th>
+    <th scope="col">Action</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Experience
+            </td>
+                            <td>
+                                <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.IdLecturer" onclick="toggle(@i, @item.IdLecturer)" data-target="#addingModal">
+                                    Edit
+                                </button>
+            
+                                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                                        Details
+                                    </button>*@
+            
+                                <a href="~/Lecturer/ShowCourseOfLecture/@item.IdLecturer" class="btn btn-outline-danger">
+                                    Courses
+                                </a>
+
+                            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<script>
+document.getElementById('editor').style.display = "none";
+var index = -1;
+var _id = -1;
+
+function toggle(n, id) {
+    _id = id;
+    if (index === n){
+            document.getElementById('editor').style.display = "none";
+            index = -1;
+            return;
+        }
+    index = n;
+    document.getElementById('editor').style.display = "";
+    $("#new_name").val(document.getElementById("table").rows[n].cells[1].innerHTML);
+    $("#new_experience").val(document.getElementById("table").rows[n].cells[2].innerHTML);
+    //$("#new_name").attr("placeholder", document.getElementById("table").rows[n].cells[1].innerHTML);
+}
+
+function send_post()
+{
+    var name = $("#new_name").val();
+    name = name.replace(/ +/g, ' ').trim();
+    var exp = $("#new_experience").val()
+    exp = Number(exp.replace(/ +/g, ' ').trim());
+    
+    $.post( '/Lecturer/EditLecturer?name=' + name + "&id=" + _id + "&experience=" + exp , {data: "name"},function( data, status ) {
+    		    if(status == 'success')
+    		    {
+                    console.log("ok");
+                    document.getElementById("table").rows[index].cells[1].innerHTML = name;
+                    document.getElementById("table").rows[index].cells[2].innerHTML = exp;
+                    toggle(index, _id);
+                    $("#status").val("");
+                }else{
+                    console.log("bad")
+                    $("#status").val("bad name");
+                }
+            });
+}
+</script>

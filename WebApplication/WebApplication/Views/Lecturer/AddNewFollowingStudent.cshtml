@@ -1,0 +1,40 @@
+@model LinkedList<Model.StudentModel>
+
+@{
+    ViewData["Title"] = "Chose students";
+    int i = 0;
+}
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Name</th>
+    <th scope="col">Action</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                
+                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                                        Details
+                                    </button>*@
+            <form method="post" action="~/Lecturer/AddStudent">
+                    <input name="idCourse" type="hidden" value="@ViewData["idCourse"]" />
+                    <input name="idStudent" type="hidden" value="@item.Id" />
+                    <input name="idLecturer" type="hidden" value="@ViewData["idLecturer"]" />
+                    <button type="submit" class="fill-modal btn btn-outline-primary">Add</button>
+            </form>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

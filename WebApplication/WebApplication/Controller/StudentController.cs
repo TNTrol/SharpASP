@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DTO;
 using Interfaces;
@@ -9,10 +10,12 @@ namespace WebApplication
     public class StudentController: Controller
     {
         private IStudentService _studentService;
+        private IAdminService _adminService;
 
-        public StudentController(IStudentService studentService)
+        public StudentController(IStudentService studentService, IAdminService adminService)
         {
             _studentService = studentService;
+            _adminService = adminService;
         }
         
         public IActionResult ShowAll()
@@ -35,8 +38,9 @@ namespace WebApplication
             foreach (var course in courses)
             {
                 courseModels.AddLast(new CourseModel()
-                    {Id = course.Id, Name = course.Name, NameLecturer = course.NameLecturer});
+                    {Id = course.Id, Name = course.Name, NameLecturer = course.NameLecturer, IdStudent = id});
             }
+            
             return View(courseModels);
         }
 
@@ -59,13 +63,30 @@ namespace WebApplication
             FollowStudentDTO followingStudentDto = new FollowStudentDTO()
                 {IdCourse = followStudentModel.IdCourse, IdStudent = followStudentModel.IdStudent};
             var marksDTO = _studentService.ShowMarksCourseByIdStudent(followingStudentDto);
+            if (marksDTO == null || marksDTO.Count == 0)
+                return Redirect($"~/Student/ShowCourseOfStudent/{followingStudentDto.IdStudent}");
             LinkedList<MarkModel> marks = new LinkedList<MarkModel>();
             foreach (var mark in marksDTO)
             {
                 marks.AddLast(new MarkModel() {Mark = mark.Mark, Date = mark.Date});
             }
-
-            return View();
+            return View(marks);
         }
+
+        [HttpPost]
+        public IActionResult AddNewStudent(string name)
+        {
+            _adminService.AddNewStudent(name);
+            return Redirect("~/Student/ShowAll");
+        }
+
+        [HttpPost]
+        public IActionResult EditStudent(string name, int id)
+        {
+            if(_adminService.ChangeStudentById(id, name))
+                return StatusCode(200);
+            return StatusCode(404);
+        }
+
     }
 }
