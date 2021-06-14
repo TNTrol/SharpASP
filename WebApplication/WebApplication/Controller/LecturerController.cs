@@ -34,8 +34,8 @@ namespace WebApplication
         public IActionResult ShowCourseOfLecture(int id)
         {
             var courseDTO = _lecturerService.ShowAllCourses(id);
-            if (courseDTO == null || courseDTO.Count == 0)
-                return Redirect("~/Lecturer/ShowAll/");
+            // if (courseDTO == null || courseDTO.Count == 0)
+            //     return Redirect("~/Lecturer/ShowAll/");
             var courses = new LinkedList<CourseLecturerModel>();
             foreach (var course in courseDTO)
             {

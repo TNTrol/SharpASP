@@ -58,3 +58,8 @@
 /home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Index/Index.cshtml.g.cs
 /home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Admin/ShowSubject.cshtml.g.cs
 /home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Admin/ShowSemester.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/obj/Debug/net5.0/Razor/Views/Course/ShowAll.cshtml.g.cs
+/home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/ClosedXML.dll
+/home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/DocumentFormat.OpenXml.dll
+/home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/ExcelNumberFormat.dll
+/home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/System.IO.Packaging.dll

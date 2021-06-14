@@ -1,0 +1,118 @@
+@using Model
+@model List<Model.InformationAboutCourseModel>
+
+@{
+    ViewData["Title"] = "Lecturer";
+    int i = 0;
+}
+<div >
+    <form method="post" action="~/Course/Filter">
+        <div class="form-inline"> 
+        <input name="idLecturer" type="hidden" value="@ViewData["idLecturer"]"/>
+        <label for="typeFilter1" >Subject</label>
+        <select id="typeFilter1" class="form-control" name="idSubject">
+            
+                <option value="0">Select subject</option>
+            
+            
+            @foreach (var subject in ViewData["subject"] as List<SubjectModel>)
+            {
+                @if ((int) ViewData["select"] == subject.Id)
+                {
+                    <option selected value="@subject.Id"> @subject.Name</option>
+                }
+                else
+                {
+                    <option value="@subject.Id"> @subject.Name</option>
+                }
+            }
+        </select>
+        </div>
+        <br>
+        <div class="form-inline"> 
+        <label for="name_lecturer">Name of lecturer</label>
+        <input type="text" class="form-control" id="name_lecturer" name="name" value="@ViewData["name"]" placeholder="Name">
+        </div>
+        <br>
+        <div class="form-inline">
+            <label for="StartDate">Start with</label>
+            <div class="form-col mr-2">
+                <input id="StartDate" name="with" type="datetime-local" class="form-control" value="@ViewData["with"]"  placeholder="From Date"/>
+
+            </div>
+
+            <label for="EndDate">Complete to</label>
+            <div class="form-col mr-2">
+                <input id="EndDate" name="to"  type="datetime-local" class="form-control" value="@ViewData["to"]" placeholder="To Date"/>
+
+            </div>
+        </div>
+        <br>
+        <div class="form-inline">
+            <label for="ExperienceUp"> Experience Down </label>
+            <input type="number" id="ExperienceDown" name="ExperienceDown" min="1" max="90" minlength="1" maxlength="3" size="10" value="@ViewData["expDown"]">
+
+            <label for="ExperienceUp"> Experience Up </label>
+            <input type="number" id="ExperienceUp" name="ExperienceUp" min="1" max="90"  minlength="1" maxlength="3" size="10" value="@ViewData["expUp"]">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Filter</button>
+    </form>
+</div>
+
+
+<table id="table" class="text-center table table-striped">
+    <thead class="thead-light">
+    <th scope="col">№</th>
+    <th scope="col">Name of course</th>
+    <th scope="col">Name of lecturer</th>
+    <th scope="col">Between</th>
+    <th scope="col">Action</th>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Lecturer
+            </td>
+            <td>
+                @item.With - @item.To
+            </td>
+            <td>
+                <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal"  data-target="#addingModal">
+                    Edit
+                </button>
+            
+                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                                        Details
+                                    </button>*@
+            
+                <a href="~/Lecturer/ShowCourseOfLecture/" class="btn btn-outline-danger">
+                    Courses
+                </a>
+
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<a asp-action="Download"
+       asp-route-IdSubject="@ViewData["select"]"
+       asp-route-With="@ViewData["with"]"
+       asp-route-To="@ViewData["to"]"
+       asp-route-ExperienceUp="@ViewData["expUp"]"
+       asp-route-ExperienceDown="@ViewData["expDown"]"
+       asp-route-Name="@ViewData["name"]"
+       class="btn btn-outline-primary">
+        Download As ExcelFile
+    </a>
+<script>
+
+</script>

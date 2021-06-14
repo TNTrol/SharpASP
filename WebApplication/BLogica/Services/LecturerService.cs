@@ -133,7 +133,7 @@ namespace Services
                 return (false, null, null, null);
             var lecturer = _lecturerRepository.Get(newCourseDto.IdLecturer);
             var semester = _semesterRepository.Get(newCourseDto.IdSemester);
-            var subject = _subjectRepository.Get(newCourseDto.IdSemester);
+            var subject = _subjectRepository.Get(newCourseDto.IdSubject);
             if (lecturer == null || semester == null || subject == null)
                 return (false, null, null, null);
             return (true, semester, lecturer, subject);
