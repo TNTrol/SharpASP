@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Model;
 
 namespace WebApplication
@@ -10,10 +11,12 @@ namespace WebApplication
     public class AdminController: Controller
     {
         private IAdminService _adminService;
+        private readonly ILogger<AdminController> _logger;
 
-        public AdminController(IAdminService adminService)
+        public AdminController(IAdminService adminService, ILogger<AdminController> logger)
         {
             _adminService = adminService;
+            _logger = logger;
         }
 
         public IActionResult ShowSubject()
@@ -24,7 +27,7 @@ namespace WebApplication
             {
                 subjectModels.AddLast(new SubjectModel() {Id = subjectVar.Id, Name = subjectVar.Name});
             }
-
+            _logger.LogInformation("Showing all subjects");
             return View(subjectModels);
         }
 
@@ -36,7 +39,7 @@ namespace WebApplication
             {
                 subjectModels.AddLast(new SemesterModel() {Id = s.Id, With = s.With, To = s.To});
             }
-
+            _logger.LogInformation("Showing all semesters");
             return View(subjectModels);
         }
 
@@ -45,6 +48,7 @@ namespace WebApplication
         {
             if (_adminService.ChangeSubject(new SubjectDTO() {Id = subjectModel.Id, Name = subjectModel.Name}))
                 return StatusCode(200);
+            _logger.LogWarning($"Bad post edit subject");
             return StatusCode(404);
         }
 
@@ -52,6 +56,7 @@ namespace WebApplication
         public IActionResult AddSubject(string name)
         {
             _adminService.AddNewSubject(name);
+            _logger.LogInformation($"Add subject with name: {name}");
             return Redirect("~/Admin/ShowSubject/");
         }
 
@@ -59,6 +64,7 @@ namespace WebApplication
         public IActionResult AddSemester(DateTime to, DateTime with)
         {
             _adminService.AddNewSemester(with, to);
+            _logger.LogInformation($"Add semester with {with} to {to}");
             return Redirect("~/Admin/ShowSemester/");
         }
         
@@ -68,6 +74,7 @@ namespace WebApplication
             if (_adminService.ChangeSemester(new SemesterDTO()
                 {Id = semesterModel.Id, To = semesterModel.To, With = semesterModel.With}))
                 return StatusCode(200);
+            _logger.LogWarning($"Bad post edit semester");
             return StatusCode(404);
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Model;
 
 namespace WebApplication
@@ -11,11 +12,13 @@ namespace WebApplication
     {
         private IStudentService _studentService;
         private IAdminService _adminService;
+        private readonly ILogger<StudentController> _logger;
 
-        public StudentController(IStudentService studentService, IAdminService adminService)
+        public StudentController(IStudentService studentService, IAdminService adminService, ILogger<StudentController> logger)
         {
             _studentService = studentService;
             _adminService = adminService;
+            _logger = logger;
         }
         
         public IActionResult ShowAll()
@@ -25,6 +28,7 @@ namespace WebApplication
             {
                 studentModels.AddLast(new StudentModel(){Id = student.Id, Name = student.Name});
             }
+            _logger.LogInformation("Show all students");
             ViewData["Students"] = studentModels;
             return View();
         }

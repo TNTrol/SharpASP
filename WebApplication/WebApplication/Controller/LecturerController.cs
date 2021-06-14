@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Model;
 
 namespace WebApplication
@@ -11,12 +12,14 @@ namespace WebApplication
         private readonly ILecturerService _lecturerService;
         private readonly IStudentService _studentService;
         private readonly IAdminService _adminService;
+        private readonly ILogger<LecturerController> _logger;
 
-        public LecturerController(ILecturerService lecturerService, IStudentService studentService, IAdminService adminService)
+        public LecturerController(ILecturerService lecturerService, IStudentService studentService, IAdminService adminService, ILogger<LecturerController> logger)
         {
             _lecturerService = lecturerService;
             _studentService = studentService;
             _adminService = adminService;
+            _logger = logger;
         }
 
         public IActionResult ShowAll()
@@ -56,6 +59,7 @@ namespace WebApplication
             {
                 semesters.AddLast(new SemesterModel() {Id = semester.Id, To = semester.To, With = semester.With});
             }
+            _logger.LogInformation($"Show all course of lecturer {id}");
 
             ViewData["semester"] = semesters;
             ViewData["subject"] = subjects;
@@ -77,6 +81,7 @@ namespace WebApplication
             {
                 students.AddLast(new StudentModel() {Id = student.Id, Name = student.Name});
             }
+            _logger.LogInformation($"Show all student folowing on course {followingStudentOnCourseModel.IdCourse}");
             ViewData["idCourse"] = lecturer.IdCourse;
             ViewData["idLecturer"] = lecturer.IdLecturer;
             return View(students);
@@ -91,7 +96,7 @@ namespace WebApplication
             {
                 markLecturerModels.AddLast(new MarkLecturerModel() {Id = mark.Id, Date = mark.Date, Mark = mark.Mark});
             }
-
+            _logger.LogInformation($"Show all mark of student:{studentOfCourseModel.IdStudent} following on course:{studentOfCourseModel.IdCourse}");
             ViewData["course"] = studentOfCourseModel.IdCourse;
             ViewData["student"] = studentOfCourseModel.IdStudent;
             return View(markLecturerModels);
@@ -106,7 +111,7 @@ namespace WebApplication
                 IdStudent = inputMarkModel.IdStudent
             };
             if (_lecturerService.AddMarkStudent(mark))
-                ;
+                _logger.LogInformation($"Put marks:{inputMarkModel.Mark} student:{inputMarkModel.IdStudent} on course:{inputMarkModel.Course}");
             return Redirect($"~/Lecturer/ShowMarksFollowingStudent/?idCourse={inputMarkModel.Course}&idStudent={inputMarkModel.IdStudent}");
         }
 
@@ -118,7 +123,7 @@ namespace WebApplication
             {
                 list.AddLast(new StudentModel() {Id = student.Id, Name = student.Name});
             }
-
+            _logger.LogInformation($"Add new following student{followingStudentOnCourseModel.IdCourse} on course{followingStudentOnCourseModel.IdCourse}");
             ViewData["idCourse"] = followingStudentOnCourseModel.IdCourse;
             ViewData["idLecturer"] = followingStudentOnCourseModel.IdLecturer;
             return View(list);
@@ -161,6 +166,7 @@ namespace WebApplication
                 IdSubject = newCourseModel.IdSemester
             }))
                 return StatusCode(200);
+            _logger.LogWarning($"Error in editor course");
             return StatusCode(404);
         }
 

@@ -3,10 +3,10 @@ using System.IO;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Model;
 using WebApplication.Utils;
 using ClosedXML.Excel;
+using Microsoft.Extensions.Logging;
 
 namespace WebApplication
 {
@@ -14,11 +14,13 @@ namespace WebApplication
     {
         private readonly ICourseService _courseService;
         private readonly IAdminService _adminService;
+        private readonly ILogger<CourseController> _logger;
 
-        public CourseController(ICourseService courseService, IAdminService adminService)
+        public CourseController(ICourseService courseService, IAdminService adminService, ILogger<CourseController> logger)
         {
             _courseService = courseService;
             _adminService = adminService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -86,7 +88,7 @@ namespace WebApplication
             var result = filter.GetResult(_courseService.ShowCourses());
             using (var workbook = new XLWorkbook())
             {
-                //_logger.LogInformation($"Saving xlsx file for items");
+                _logger.LogInformation($"Saving xlsx file of information about courses");
 
                 var worksheet = workbook.Worksheets.Add("Items");
                 worksheet.Cell("A1").Value = "Id";

@@ -46,14 +46,14 @@ namespace WebApplication
 
                 }
                 
-                public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+                public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
                 {
-                    //loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "log.txt"));
-                    //var logger = loggerFactory.CreateLogger("FileLogger");
+                    loggerFactory.AddFile(Path.Combine(Directory.GetCurrentDirectory(), "log.txt"));
+                    var logger = loggerFactory.CreateLogger("FileLogger");
                     app.UseStaticFiles();
                     if (env.IsDevelopment())
                     {
-                        //logger.LogInformation("Using developer exception page", null);
+                        logger.LogInformation("Using developer exception page", null);
                         app.UseDeveloperExceptionPage();
                     }
                     else
