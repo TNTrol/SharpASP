@@ -42,7 +42,7 @@ namespace Services
         {
             Lecturer lecturer = _lecturerRepository.Get(idLecturer);
             if (lecturer == null)
-                return null;
+                return new List<CourseLecturerDTO>();;
             List<Course> list = _courseRepository.FindInclude(c => c.Lecturer.Id == idLecturer, c => c.Subject, c2 => c2.Semester, c=> c.Lecturer).ToList();
             List<CourseLecturerDTO> courses = new List<CourseLecturerDTO>();
             foreach(Course course in list)
@@ -71,15 +71,15 @@ namespace Services
 
         public IList<StudentDTO> ShowAllFollowingStudentsOnCourse(LecturerAndCourseDTO lecturerDto)
         {
+            List<StudentDTO> outStudents = new List<StudentDTO>();
             Lecturer lecturer = _lecturerRepository.Get(lecturerDto.IdLecturer);
             if (lecturer == null)
-                return null;
+                return outStudents;
             Course course = _courseRepository.Find(c => c.Id == lecturerDto.IdCourse && c.Lecturer == lecturer).First();
             if (course == null)
-                return null;
+                return outStudents;
             var students = _followingStudentRepository.FindInclude(fs => fs.Course == course, fsp => fsp.Student)
                 .Select(f => f.Student).ToList();
-            List<StudentDTO> outStudents = new List<StudentDTO>();
             foreach(Student student in students)
                 outStudents.Add(new StudentDTO(){Id = student.Id, Name = student.Name});
             return outStudents;
@@ -170,6 +170,22 @@ namespace Services
                 _markRepository.Delete(mark.Id);
             }
             _followingStudentRepository.Delete(student.Id);
+            return true;
+        }
+        
+        public bool DeleteCourse(int idCourse)
+        {
+            var course = _courseRepository.FindInclude(c => c.Id == idCourse, c => c.Students).FirstOrDefault();
+            foreach (var student in course.Students)
+            {
+                var marks = _markRepository.FindInclude(m => m.Id == student.Id).ToList();
+                foreach (var mark in marks)
+                {
+                    _markRepository.Delete(mark.Id);
+                }
+                _followingStudentRepository.Delete(student.Id);
+            };
+            _courseRepository.Delete(course.Id);
             return true;
         }
     }

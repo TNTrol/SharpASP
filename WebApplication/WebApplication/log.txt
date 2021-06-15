@@ -17,3 +17,700 @@ Show all student folowing on course 1
 Show all mark of student:3 following on course:1
 Put marks:3 student:3 on course:1
 Show all mark of student:3 following on course:1
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+An unhandled exception has occurred while executing the request.
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all students
+Show all students
+Show all students
+Show all students
+Show all students
+Show all students
+Using developer exception page
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all students
+Show all students
+Show all students
+Show all students
+Show all course of lecturer 1
+Show all student folowing on course 1
+Show all mark of student:3 following on course:1
+Showing all subjects
+Showing all semesters
+Saving xlsx file of information about courses
+Showing all semesters
+Showing all subjects
+Show all students
+Showing all subjects
+Showing all semesters
+Showing all subjects
+Showing all semesters
+Showing all subjects
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Showing all subjects
+Show all course of lecturer 1
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all course of lecturer 1
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all course of lecturer 1
+Show all student folowing on course 1
+Show all mark of student:3 following on course:1
+Put marks:3 student:3 on course:1
+Show all mark of student:3 following on course:1
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+An unhandled exception has occurred while executing the request.
+Showing all semesters
+Showing all subjects
+An unhandled exception has occurred while executing the request.
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Showing all subjects
+Add subject with name: c#
+Showing all subjects
+Showing all semesters
+Show all students
+Showing all subjects
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Showing all subjects
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Saving xlsx file of information about courses
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Saving xlsx file of information about courses
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Saving xlsx file of information about courses
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Saving xlsx file of information about courses
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Saving xlsx file of information about courses
+Saving xlsx file of information about courses
+Showing all subjects
+Showing all semesters
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Saving xlsx file of information about courses
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Showing all subjects
+Show all students
+Show all course of lecturer 1
+Showing all subjects
+Showing all subjects
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Showing all subjects
+Show all course of lecturer 1
+Show all course of lecturer 1
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all course of lecturer 1
+Show all course of lecturer 1
+Show all course of lecturer 1
+Show all course of lecturer 1
+Show all students
+An unhandled exception has occurred while executing the request.
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all students
+An unhandled exception has occurred while executing the request.
+Show all students
+Showing all subjects
+Show all students
+An unhandled exception has occurred while executing the request.
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all students
+Show all students
+Show all students
+Show all students
+Show all course of lecturer 3
+Show all course of lecturer 3
+Show all course of lecturer 2
+Show all course of lecturer 2
+Show all course of lecturer 2
+Show all course of lecturer 2
+Show all course of lecturer 5
+Show all course of lecturer 5
+Show all student folowing on course 14
+Add new following student14 on course14
+Show all student folowing on course 14
+Add new following student14 on course14
+Show all student folowing on course 14
+Add new following student14 on course14
+Show all student folowing on course 14
+Show all students
+Show all students
+Show all students
+Show all students
+Show all students
+Show all course of lecturer 1
+Show all student folowing on course 1
+Showing all subjects
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Showing all subjects
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Bad post edit subject
+Show all students
+Showing all semesters
+Add semester with 15.01.2021 22:54:00 to 15.07.2021 22:54:00
+Showing all semesters
+Show all students
+Showing all subjects
+Showing all semesters
+Show all students
+Showing all subjects
+Showing all semesters
+Show all course of lecturer 1
+Show all student folowing on course 1
+Add new following student1 on course1
+Show all student folowing on course 1
+Add new following student1 on course1
+Show all student folowing on course 1
+Add new following student1 on course1
+Show all student folowing on course 1
+Show all course of lecturer 1
+Show all student folowing on course 6
+Add new following student6 on course6
+Show all student folowing on course 6
+Add new following student6 on course6
+Show all student folowing on course 6
+Add new following student6 on course6
+Show all student folowing on course 6
+Add new following student6 on course6
+Show all student folowing on course 6
+Add new following student6 on course6
+Show all student folowing on course 6
+Show all course of lecturer 1
+Show all student folowing on course 12
+Add new following student12 on course12
+Show all student folowing on course 12
+Add new following student12 on course12
+Show all student folowing on course 12
+Add new following student12 on course12
+Show all student folowing on course 12
+Add new following student12 on course12
+Show all student folowing on course 12
+Add new following student12 on course12
+Show all student folowing on course 12
+Add new following student12 on course12
+Show all student folowing on course 12
+Show all course of lecturer 2
+Show all student folowing on course 7
+Add new following student7 on course7
+Show all student folowing on course 7
+Add new following student7 on course7
+Show all student folowing on course 7
+Add new following student7 on course7
+Show all student folowing on course 7
+Add new following student7 on course7
+Show all student folowing on course 7
+Add new following student7 on course7
+Show all student folowing on course 7
+Add new following student7 on course7
+Show all student folowing on course 7
+Add new following student7 on course7
+Show all student folowing on course 7
+Show all students
+Show all course of lecturer 2
+Show all student folowing on course 8
+Add new following student8 on course8
+Show all student folowing on course 8
+Add new following student8 on course8
+Show all student folowing on course 8
+Add new following student8 on course8
+Show all student folowing on course 8
+Add new following student8 on course8
+Show all student folowing on course 8
+Add new following student8 on course8
+Show all student folowing on course 8
+Show all students
+Show all course of lecturer 2
+Show all student folowing on course 13
+Add new following student13 on course13
+Show all student folowing on course 13
+Add new following student13 on course13
+Show all student folowing on course 13
+Show all course of lecturer 3
+Show all student folowing on course 10
+Add new following student10 on course10
+Show all student folowing on course 10
+Add new following student10 on course10
+Show all student folowing on course 10
+Add new following student10 on course10
+Show all student folowing on course 10
+Add new following student10 on course10
+Show all student folowing on course 10
+Add new following student10 on course10
+Show all student folowing on course 10
+Add new following student10 on course10
+Show all student folowing on course 10
+Show all course of lecturer 3
+Show all student folowing on course 11
+Add new following student11 on course11
+Show all student folowing on course 11
+Add new following student11 on course11
+Show all student folowing on course 11
+Add new following student11 on course11
+Show all student folowing on course 11
+Show all course of lecturer 4
+Show all course of lecturer 4
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Add new following student15 on course15
+Show all student folowing on course 15
+Show all course of lecturer 5
+Show all student folowing on course 14
+Show all mark of student:1 following on course:14
+Put marks:2 student:1 on course:14
+Show all mark of student:1 following on course:14
+Put marks:4 student:1 on course:14
+Show all mark of student:1 following on course:14
+Put marks:5 student:1 on course:14
+Show all mark of student:1 following on course:14
+Put marks:3 student:1 on course:14
+Show all mark of student:1 following on course:14
+Showing all semesters
+Show all course of lecturer 1
+Show all student folowing on course 12
+Show all mark of student:4 following on course:12
+Put marks:5 student:4 on course:12
+Show all mark of student:4 following on course:12
+Put marks:3 student:4 on course:12
+Show all mark of student:4 following on course:12
+Show all mark of student:4 following on course:12
+Show all mark of student:4 following on course:12
+Show all student folowing on course 12
+Show all mark of student:2 following on course:12
+Put marks:2 student:2 on course:12
+Show all mark of student:2 following on course:12
+Show all mark of student:2 following on course:12
+Put marks:5 student:2 on course:12
+Show all mark of student:2 following on course:12
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all mark of student:2 following on course:12
+Put marks:3 student:2 on course:12
+Show all mark of student:2 following on course:12
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all mark of student:2 following on course:12
+Put marks:3 student:2 on course:12
+Show all mark of student:2 following on course:12
+Put marks:4 student:2 on course:12
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all mark of student:2 following on course:12
+Put marks:2 student:2 on course:12
+Show all mark of student:2 following on course:12
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all students
+Show all course of lecturer 2
+Show all student folowing on course 7
+Show all mark of student:4 following on course:7
+Put marks:4 student:4 on course:7
+Show all mark of student:4 following on course:7
+Put marks:0 student:4 on course:7
+Show all mark of student:4 following on course:7
+Put marks:2 student:4 on course:7
+Show all mark of student:4 following on course:7
+Put marks:2 student:4 on course:7
+Show all mark of student:4 following on course:7
+Show all mark of student:4 following on course:7
+Put marks:5 student:4 on course:7
+Show all mark of student:4 following on course:7
+Show all course of lecturer 4
+Show all student folowing on course 15
+Show all mark of student:1 following on course:15
+Put marks:3 student:1 on course:15
+Show all mark of student:1 following on course:15
+Put marks:5 student:1 on course:15
+Show all mark of student:1 following on course:15
+Put marks:1 student:1 on course:15
+Show all mark of student:1 following on course:15
+Put marks:4 student:1 on course:15
+Show all mark of student:1 following on course:15
+Show all course of lecturer 3
+Show all student folowing on course 11
+Show all mark of student:7 following on course:11
+Put marks:2 student:7 on course:11
+Show all mark of student:7 following on course:11
+Put marks:4 student:7 on course:11
+Show all mark of student:7 following on course:11
+Put marks:3 student:7 on course:11
+Show all mark of student:7 following on course:11
+Show all mark of student:7 following on course:11
+Show all mark of student:7 following on course:11
+Show all mark of student:7 following on course:11
+Show all student folowing on course 11
+Show all mark of student:1 following on course:11
+Put marks:3 student:1 on course:11
+Show all mark of student:1 following on course:11
+Put marks:5 student:1 on course:11
+Show all mark of student:1 following on course:11
+Put marks:1 student:1 on course:11
+Show all mark of student:1 following on course:11
+Put marks:2 student:1 on course:11
+Show all mark of student:1 following on course:11
+Show all course of lecturer 5
+Show all student folowing on course 14
+Show all mark of student:1 following on course:14
+Show all course of lecturer 5
+Show all student folowing on course 14
+Show all mark of student:5 following on course:14
+Put marks:5 student:5 on course:14
+Show all mark of student:5 following on course:14
+Put marks:4 student:5 on course:14
+Show all mark of student:5 following on course:14
+Put marks:3 student:5 on course:14
+Show all mark of student:5 following on course:14
+Show all students
+Show all course of lecturer 4
+Show all course of lecturer 4
+Show all course of lecturer 4
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all students
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Showing all subjects
+Showing all semesters
+Showing all subjects
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all course of lecturer 0
+Showing all subjects
+Showing all semesters
+Showing all semesters
+Showing all subjects
+Show all students
+Show all students
+Show all course of lecturer 1
+Show all student folowing on course 6
+Show all course of lecturer 1
+Showing all subjects
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Showing all subjects
+Showing all semesters
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Showing all subjects
+Showing all semesters
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication

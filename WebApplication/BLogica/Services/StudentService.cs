@@ -25,13 +25,15 @@ namespace Services
 
         public IList<MarkDTO> ShowMarksCourseByIdStudent(FollowStudentDTO followStudent)
         {
+            List<MarkDTO> markdto = new List<MarkDTO>();
             Student student = _studentRepository.Get(followStudent.IdStudent);
             Course course = _courseRepository.Get(followStudent.IdCourse);
             if (student == null || course == null)
-                return null;
-            var marks = _followingStudentRepository.FindInclude(fs => fs.Student == student, fsp => fsp.Marks, fsp => fsp.Course.Subject).Select(fs => fs.Marks).First().ToList();
-            List<MarkDTO> markdto = new List<MarkDTO>();
-            foreach (var mark in marks)
+                return markdto;
+            var marks = _followingStudentRepository
+                .FindInclude(fs => fs.Student == student && fs.Course == course, fsp => fsp.Marks).First();
+            
+            foreach (var mark in marks.Marks)
                 markdto.Add(new MarkDTO(){Date = mark.Date, Mark = mark.MarkStudent, Id = mark.Id});
             return markdto;
         }
@@ -52,14 +54,14 @@ namespace Services
 
         public IList<CourseDTO> ShowAllCoursesOfStudent(int idStudent)
         {
+            List<CourseDTO> courseDtos = new List<CourseDTO>();
             Student student = _studentRepository.Get(idStudent);
             if (student == null)
-                return null;
+                return courseDtos;
             var courseLecturer = _followingStudentRepository.FindInclude(fs => fs.Student == student, fs =>  fs.Course.Lecturer, fs => fs.Course.Subject)
                 .Select(fs => fs.Course ).ToList();
-            List<CourseDTO> courseDtos = new List<CourseDTO>();
             foreach (var course in courseLecturer)
-                courseDtos.Add(new CourseDTO(){Id = course.Id, Name = course.Subject.Name, NameLecturer = course.Lecturer.Name});
+                courseDtos.Add(new CourseDTO(){Id = course.Id, Name = course.Subject.Name, NameLecturer = course.Lecturer.Name, IdStudent = idStudent});
             return courseDtos;
         }
 
@@ -87,5 +89,7 @@ namespace Services
 
             return studentDtos;
         }
+        
+
     }
 }

@@ -83,11 +83,11 @@ namespace Services
 
         public IList<SubjectDTO> ShowAllSubjects()
         {
-            List<Subject> subjects = _subjectRepository.GetAll().ToList();
+            List<Subject> subjects = _subjectRepository.FindInclude(s=> s.Id != -1, s=>s.Courses).ToList();
             List<SubjectDTO> resSubject = new List<SubjectDTO>();
             foreach (var subject in subjects)
             {
-                resSubject.Add(new SubjectDTO(){Name = subject.Name, Id = subject.Id});
+                resSubject.Add(new SubjectDTO(){Name = subject.Name, Id = subject.Id, Count = subject.Courses.Count});
             }
 
             return resSubject;
@@ -125,5 +125,7 @@ namespace Services
             _semesterRepository.Update(semester);
             return true;
         }
+
+
     }
 }

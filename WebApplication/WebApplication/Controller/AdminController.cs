@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Model;
+using WebApplication.Utils;
 
 namespace WebApplication
 {
@@ -12,35 +15,34 @@ namespace WebApplication
     {
         private IAdminService _adminService;
         private readonly ILogger<AdminController> _logger;
-
+        private readonly Mapper _mapper;
+        
         public AdminController(IAdminService adminService, ILogger<AdminController> logger)
         {
             _adminService = adminService;
             _logger = logger;
+            var congig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<SubjectDTO, SubjectModel>();
+                cfg.CreateMap<SemesterDTO, SemesterModel>();
+            });
+            _mapper = new Mapper(congig);
         }
 
-        public IActionResult ShowSubject()
+        public IActionResult ShowSubject(int page = 1, int size = 10)
         {
-            IList<SubjectDTO> subjects = _adminService.ShowAllSubjects();
-            LinkedList<SubjectModel> subjectModels = new LinkedList<SubjectModel>();
-            foreach (var subjectVar in subjects)
-            {
-                subjectModels.AddLast(new SubjectModel() {Id = subjectVar.Id, Name = subjectVar.Name});
-            }
+            var subjectModels =
+                _mapper.Map<IList<SubjectDTO>, LinkedList<SubjectModel>>(_adminService.ShowAllSubjects());
             _logger.LogInformation("Showing all subjects");
-            return View(subjectModels);
+            return View(PaginatedList<SubjectModel>.CreateList(subjectModels.AsQueryable(), page, size));
         }
 
-        public IActionResult ShowSemester()
+        public IActionResult ShowSemester(int page = 1, int size = 10)
         {
-            IList<SemesterDTO> semesters = _adminService.ShowAllSemesters();
-            LinkedList<SemesterModel> subjectModels = new LinkedList<SemesterModel>();
-            foreach (var s in semesters)
-            {
-                subjectModels.AddLast(new SemesterModel() {Id = s.Id, With = s.With, To = s.To});
-            }
+            var subjectModels =
+                _mapper.Map<IList<SemesterDTO>, List<SemesterModel>>(_adminService.ShowAllSemesters());
             _logger.LogInformation("Showing all semesters");
-            return View(subjectModels);
+            return View(PaginatedList<SemesterModel>.CreateList(subjectModels.AsQueryable(), page, size));
         }
 
         [HttpPost]

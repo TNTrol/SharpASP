@@ -1,13 +1,7 @@
 
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using DTO;
 using Faculty.EF;
-using Faculty.Entities;
 using Faculty.Interfaces;
 using Faculty.Repositories;
 using Interfaces;
@@ -41,9 +35,6 @@ namespace WebApplication
                     services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
                     services.AddDbContext<ApplicationContext>(options => options.UseMySql("Host=localhost;Port=3306;Database=mydb_sharp;Username=tntrol;Password=password",
                         new MySqlServerVersion(new Version(8, 0, 11))));
-                    
-                    
-
                 }
                 
                 public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)

@@ -1,4 +1,4 @@
-@model LinkedList<Model.SemesterModel>
+@model WebApplication.Utils.PaginatedList<Model.SemesterModel>
        
        @{
            ViewData["Title"] = "Semesters";
@@ -14,7 +14,7 @@
     <div class="form-col mr-2">
         <input id="EndDate" name="to" type="datetime-local" class="form-control" placeholder="To Date"/>
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Добавить семестр</button>
+    <button type="submit" class="btn btn-primary mb-2">Add semester</button>
 </div>
  </form>
  <div id="editor" class="form-inline">
@@ -26,7 +26,7 @@
          <div class="form-col mr-2">
              <input id="to" name="to" type="datetime-local" class="form-control" placeholder="To Date"/>
          </div>
-     <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Изменить семестр</button>
+     <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Change semester</button>
      <label class="sr-only"  id = "status"></label>
  </div>
 </div>
@@ -35,6 +35,7 @@
                <th scope="col">№</th>
                <th scope="col">With</th>
                <th scope="col">To</th>
+               
                <th scope="col">Action</th>
                </thead>
                <tbody>
@@ -49,8 +50,9 @@
                            @item.With
                        </td>
                        <td>
-                                                  @item.To
-                                              </td>
+                           @item.To
+                       </td>
+                       
                        <td>
                            <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.Id" data-target="#addingModal" onclick="toggle(@i, @item.Id)">
                                Edit
@@ -61,8 +63,21 @@
                }
                </tbody>
            </table>
-       
-
+  
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+<a asp-action="ShowSemester"
+    asp-route-page="@(Model.PageIndex-1)"
+class="btn btn-default @prevDisabled">
+      Pervios
+      </a>
+      <a asp-action="ShowSemester"
+    asp-route-page="@(Model.PageIndex+1)"
+class="btn btn-default @nextDisabled">
+      Next
+      </a>
 <script>
 document.getElementById('editor').style.display = "none";
 var index = -1;

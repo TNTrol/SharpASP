@@ -21,5 +21,6 @@ namespace Interfaces
 
         public void DeleteMark(int id);
         public bool DeleteFollowingStudent(int id);
+        public bool DeleteCourse(int idCourse);
     }
 }

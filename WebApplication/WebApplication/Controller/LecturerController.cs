@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Model;
+using WebApplication.Utils;
 
 namespace WebApplication
 {
@@ -13,6 +16,7 @@ namespace WebApplication
         private readonly IStudentService _studentService;
         private readonly IAdminService _adminService;
         private readonly ILogger<LecturerController> _logger;
+        private readonly Mapper _mapper;
 
         public LecturerController(ILecturerService lecturerService, IStudentService studentService, IAdminService adminService, ILogger<LecturerController> logger)
         {
@@ -20,47 +24,32 @@ namespace WebApplication
             _studentService = studentService;
             _adminService = adminService;
             _logger = logger;
+            var congig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<LecturerDTO, LecturerModel>();
+                cfg.CreateMap<CourseLecturerDTO, CourseLecturerModel>();
+                cfg.CreateMap<SubjectDTO, SubjectModel>();
+                cfg.CreateMap<SemesterDTO, SemesterModel>();
+                cfg.CreateMap<StudentDTO, StudentModel>();
+                cfg.CreateMap<MarkDTO, MarkLecturerModel>();
+            });
+            _mapper = new Mapper(congig);
         }
 
-        public IActionResult ShowAll()
+        public IActionResult ShowAll(int page = 1, int size = 10)
         {
             IList<LecturerDTO> lecturers = _lecturerService.ShowAllLecturer();
-            LinkedList<LecturerModel> lecturerModels = new LinkedList<LecturerModel>();
-            foreach (var lec in lecturers)
-            {
-                lecturerModels.AddLast(new LecturerModel() {Name = lec.Name, Experience = lec.Experience, IdLecturer = lec.IdLecturer});
-            }
-
-            return View(lecturerModels);
+            
+            return View(PaginatedList<LecturerModel>.CreateList(
+                _mapper.Map<IList<LecturerDTO>, List<LecturerModel>>(lecturers).AsQueryable(), page, size));
         }
 
         public IActionResult ShowCourseOfLecture(int id)
         {
-            var courseDTO = _lecturerService.ShowAllCourses(id);
-            // if (courseDTO == null || courseDTO.Count == 0)
-            //     return Redirect("~/Lecturer/ShowAll/");
-            var courses = new LinkedList<CourseLecturerModel>();
-            foreach (var course in courseDTO)
-            {
-                courses.AddLast(new CourseLecturerModel()
-                    {Id = course.Id, Name = course.Name, To = course.To, With = course.With});
-            }
-
-            var subjectDTO = _adminService.ShowAllSubjects();
-            var subjects = new LinkedList<SubjectModel>();
-            foreach (var subject in subjectDTO)
-            {
-                subjects.AddLast(new SubjectModel() {Id = subject.Id, Name = subject.Name});
-            }
-
-            var semesterDTO = _adminService.ShowAllSemesters();
-            var semesters = new LinkedList<SemesterModel>();
-            foreach (var semester in semesterDTO)
-            {
-                semesters.AddLast(new SemesterModel() {Id = semester.Id, To = semester.To, With = semester.With});
-            }
+            var courses = _mapper.Map<IList<CourseLecturerDTO>, LinkedList<CourseLecturerModel>>(_lecturerService.ShowAllCourses(id));
+            var subjects =  _mapper.Map<IList<SubjectDTO>, LinkedList<SubjectModel>>(_adminService.ShowAllSubjects());
+            var semesters = _mapper.Map<IList<SemesterDTO>, LinkedList<SemesterModel>>(_adminService.ShowAllSemesters());
             _logger.LogInformation($"Show all course of lecturer {id}");
-
             ViewData["semester"] = semesters;
             ViewData["subject"] = subjects;
             ViewData["idLecturer"] = id;
@@ -69,37 +58,26 @@ namespace WebApplication
         
         public IActionResult ShowFollowingStudent(FollowingStudentOnCourseModel followingStudentOnCourseModel)
         {
-            var lecturer = new LecturerAndCourseDTO()
-            {
-                IdCourse = followingStudentOnCourseModel.IdCourse, IdLecturer = followingStudentOnCourseModel.IdLecturer
-            };
-            var studentsDTO = _lecturerService.ShowAllFollowingStudentsOnCourse(lecturer);
+            var studentsDTO = _lecturerService.ShowAllFollowingStudentsOnCourse(new LecturerAndCourseDTO()
+            {IdCourse = followingStudentOnCourseModel.IdCourse, IdLecturer = followingStudentOnCourseModel.IdLecturer});
             if (studentsDTO == null)
                 return Redirect("~/Lecturer/ShowAll/" );
-            LinkedList<StudentModel> students = new LinkedList<StudentModel>();
-            foreach (var student in studentsDTO)
-            {
-                students.AddLast(new StudentModel() {Id = student.Id, Name = student.Name});
-            }
+            var students = _mapper.Map<IList<StudentDTO>, LinkedList<StudentModel>>(studentsDTO);
             _logger.LogInformation($"Show all student folowing on course {followingStudentOnCourseModel.IdCourse}");
-            ViewData["idCourse"] = lecturer.IdCourse;
-            ViewData["idLecturer"] = lecturer.IdLecturer;
+            ViewData["idCourse"] = followingStudentOnCourseModel.IdCourse;
+            ViewData["idLecturer"] = followingStudentOnCourseModel.IdLecturer;
             return View(students);
         }
 
         public IActionResult ShowMarksFollowingStudent(StudentOfCourseModel studentOfCourseModel)
         {
             FollowStudentDTO followStudentDto = new FollowStudentDTO() {IdCourse = studentOfCourseModel.IdCourse, IdStudent = studentOfCourseModel.IdStudent};
-            IList<MarkDTO> markDtos = _studentService.ShowMarksCourseByIdStudent(followStudentDto);
-            LinkedList<MarkLecturerModel> markLecturerModels = new LinkedList<MarkLecturerModel>();
-            foreach (var mark in markDtos)
-            {
-                markLecturerModels.AddLast(new MarkLecturerModel() {Id = mark.Id, Date = mark.Date, Mark = mark.Mark});
-            }
+            var m = _studentService.ShowMarksCourseByIdStudent(followStudentDto);
+            var marks = _mapper.Map<IList<MarkDTO>, LinkedList<MarkLecturerModel>>(m);
             _logger.LogInformation($"Show all mark of student:{studentOfCourseModel.IdStudent} following on course:{studentOfCourseModel.IdCourse}");
             ViewData["course"] = studentOfCourseModel.IdCourse;
             ViewData["student"] = studentOfCourseModel.IdStudent;
-            return View(markLecturerModels);
+            return View(marks);
         }
 
         [HttpPost]
@@ -118,11 +96,7 @@ namespace WebApplication
         public IActionResult AddNewFollowingStudent(FollowingStudentOnCourseModel followingStudentOnCourseModel)
         {
             var students = _studentService.ShowAllStudents();
-            LinkedList<StudentModel> list = new LinkedList<StudentModel>();
-            foreach (var student in students)
-            {
-                list.AddLast(new StudentModel() {Id = student.Id, Name = student.Name});
-            }
+            var list = _mapper.Map<IList<StudentDTO>, LinkedList<StudentModel>>(students);
             _logger.LogInformation($"Add new following student{followingStudentOnCourseModel.IdCourse} on course{followingStudentOnCourseModel.IdCourse}");
             ViewData["idCourse"] = followingStudentOnCourseModel.IdCourse;
             ViewData["idLecturer"] = followingStudentOnCourseModel.IdLecturer;
@@ -189,6 +163,12 @@ namespace WebApplication
         {
             _lecturerService.DeleteFollowingStudent(idStudent);
             return Redirect("~/Lecturer/ShowFollowingStudent/?idCourse=" + idCourse + "&idLecturer=" + idLecturer);
+        }
+        
+        public IActionResult DeleteCourse(int idCourse, int idLecturer)
+        {
+            _lecturerService.DeleteCourse(idCourse);
+            return Redirect($"~/Lecturer/ShowCourseOfLecture/{idLecturer}");
         }
     }
 }

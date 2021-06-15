@@ -1,4 +1,4 @@
-@model LinkedList<Model.LecturerModel>
+@model WebApplication.Utils.PaginatedList<Model.LecturerModel>
 @{
     ViewData["Title"] = "Lecturer";
     int i = 0;
@@ -12,7 +12,7 @@
         <label for="experience" class="sr-only" >Experience</label>
         <input type="text" class="form-control" id="experience" name = "experience" placeholder="Experience">
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Добавить препода</button>
+    <button type="submit" class="btn btn-primary mb-2">Add lecturer</button>
 </form>
 
 <div id="editor" class="form-inline">
@@ -21,7 +21,7 @@
         <input type="text" class="form-control" id="new_name" name = "name" placeholder="Name">
         <input type="text" class="form-control" id="new_experience" name = "experience" placeholder="Experience">
     </div>
-    <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Изменить препода</button>
+    <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Change lecturer</button>
     <label class="sr-only"  id = "status"></label>
 </div>
 </div>
@@ -46,24 +46,39 @@
             <td>
                 @item.Experience
             </td>
-                            <td>
-                                <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.IdLecturer" onclick="toggle(@i, @item.IdLecturer)" data-target="#addingModal">
-                                    Edit
-                                </button>
+            <td>
+                <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.IdLecturer" onclick="toggle(@i, @item.IdLecturer)" data-target="#addingModal">
+                    Edit
+                </button>
             
-                                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
+                @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
                                         Details
                                     </button>*@
             
-                                <a href="~/Lecturer/ShowCourseOfLecture/@item.IdLecturer" class="btn btn-outline-danger">
-                                    Courses
-                                </a>
+                <a href="~/Lecturer/ShowCourseOfLecture/@item.IdLecturer" class="btn btn-outline-danger">
+                    Courses
+                </a>
 
-                            </td>
+            </td>
         </tr>
     }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action="ShowAll"
+   asp-route-page="@(Model.PageIndex-1)"
+   class="btn btn-default @prevDisabled">
+    Pervios
+</a>
+<a asp-action="ShowAll"
+   asp-route-page="@(Model.PageIndex+1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+
 <script>
 document.getElementById('editor').style.display = "none";
 var index = -1;

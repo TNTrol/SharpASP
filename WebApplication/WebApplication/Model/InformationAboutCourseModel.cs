@@ -9,5 +9,7 @@ namespace Model
         public DateTime With { get; set; }
         public DateTime To { get; set; }
         public string Lecturer { get; set; }
+
+        public int Count { get; set; }
     }
 }

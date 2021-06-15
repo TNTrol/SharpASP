@@ -7,5 +7,7 @@ namespace DTO
         public int Id { get; set; }
         public String Name { get; set; }
         public String NameLecturer { get; set; }
+
+        public int IdStudent { get; set; }
     }
 }

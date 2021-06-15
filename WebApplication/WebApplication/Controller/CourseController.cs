@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using AutoMapper;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -15,62 +18,53 @@ namespace WebApplication
         private readonly ICourseService _courseService;
         private readonly IAdminService _adminService;
         private readonly ILogger<CourseController> _logger;
+        private readonly Mapper _mapper;
 
         public CourseController(ICourseService courseService, IAdminService adminService, ILogger<CourseController> logger)
         {
             _courseService = courseService;
             _adminService = adminService;
             _logger = logger;
+            var congig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<SubjectDTO, SubjectModel>();
+                cfg.CreateMap<FullCourseDTO, InformationAboutCourseModel>();
+            });
+            _mapper = new Mapper(congig);
         }
 
         [HttpGet]
-        public IActionResult ShowAll()
+        public IActionResult ShowAll(FilterModel filterModel = null ,int page = 1, int size = 10)
         {
-            IList<FullCourseDTO> fullCourses = _courseService.ShowCourses();
-            var courses = new List<InformationAboutCourseModel>();
-            foreach (var course in fullCourses)
+            List<InformationAboutCourseModel> courses;
+            if (filterModel != null)
             {
-                courses.Add(new InformationAboutCourseModel()
-                {
-                    Id = course.Id, Lecturer = course.Lecturer, Name = course.Name, To = course.To, With = course.With
-                });
+                var list = new Filter(filterModel).GetResult(_courseService.ShowCourses());
+                courses = _mapper.Map<IList<FullCourseDTO>, List<InformationAboutCourseModel>>(list);
             }
-            var subjectDTO = _adminService.ShowAllSubjects();
-            var subjects = new List<SubjectModel>();
-            foreach (var subject in subjectDTO)
+            else
             {
-                subjects.Add(new SubjectModel() {Id = subject.Id, Name = subject.Name});
+                courses = _mapper.Map<IList<FullCourseDTO>, List<InformationAboutCourseModel>>(_courseService.ShowCourses());
             }
-
-            ViewData["expUp"] = 0;
-            ViewData["expDown"] = 0;
-            ViewData["to"] = null;
-            ViewData["with"] = null; 
+            
+            var subjects = _mapper.Map<IList<SubjectDTO>, List<SubjectModel>>(_adminService.ShowAllSubjects());
+            
+            ViewData["expUp"] = filterModel?.ExperienceUp ?? 0;
+            ViewData["expDown"] = filterModel?.ExperienceDown ?? 0;
+            ViewData["to"] = filterModel?.To ?? null;
+            ViewData["with"] = filterModel?.With ?? null;
             ViewData["subject"] = subjects;
-            ViewData["name"] = null;
-            ViewData["select"] = 0;
-            return View(courses);
+            ViewData["name"] = filterModel?.Name ?? null;
+            ViewData["select"] = filterModel?.IdSubject ?? 0;
+            return View(PaginatedList<InformationAboutCourseModel>.CreateList(courses.AsQueryable(), page, size));
         }
 
         [HttpPost]
-        public IActionResult Filter(FilterModel filterModel)
+        public IActionResult Filter(FilterModel filterModel, int page = 1, int size = 10)
         {
-            var filter = new Filter(filterModel);
-            var list = filter.GetResult(_courseService.ShowCourses());
-            var subjectDTO = _adminService.ShowAllSubjects();
-            var subjects = new List<SubjectModel>();
-            foreach (var subject in subjectDTO)
-            {
-                subjects.Add(new SubjectModel() {Id = subject.Id, Name = subject.Name});
-            }
-            var courses = new List<InformationAboutCourseModel>();
-            foreach (var course in list)
-            {
-                courses.Add(new InformationAboutCourseModel()
-                {
-                    Id = course.Id, Lecturer = course.Lecturer, Name = course.Name, To = course.To, With = course.With
-                });
-            }
+            var list = new Filter(filterModel).GetResult(_courseService.ShowCourses());
+            var subjects = _mapper.Map<IList<SubjectDTO>, List<SubjectModel>>(_adminService.ShowAllSubjects());
+            var courses = _mapper.Map<IList<FullCourseDTO>, List<InformationAboutCourseModel>>(list);
             
             ViewData["expUp"] = filterModel.ExperienceUp;
             ViewData["expDown"] = filterModel.ExperienceDown;
@@ -79,7 +73,7 @@ namespace WebApplication
             ViewData["subject"] = subjects;
             ViewData["name"] = filterModel.Name;
             ViewData["select"] = filterModel.IdSubject;
-            return View("ShowAll", courses);
+            return View("ShowAll", PaginatedList<InformationAboutCourseModel>.CreateList(courses.AsQueryable(), page, size));
         }
 
         public IActionResult Download(FilterModel filterModel)
@@ -90,12 +84,13 @@ namespace WebApplication
             {
                 _logger.LogInformation($"Saving xlsx file of information about courses");
 
-                var worksheet = workbook.Worksheets.Add("Items");
+                var worksheet = workbook.Worksheets.Add("Course");
                 worksheet.Cell("A1").Value = "Id";
                 worksheet.Cell("B1").Value = "Name of subject";
                 worksheet.Cell("C1").Value = "Name of lecturer";
                 worksheet.Cell("D1").Value = "Begin";
                 worksheet.Cell("E1").Value = "End";
+                worksheet.Cell("F1").Value = "Count students";
 
                 worksheet.Cell("G1").Value = "Total Amount";
                 worksheet.Cell("H1").Value = "Total Value";
@@ -110,15 +105,15 @@ namespace WebApplication
 
                     rowObj.Cell(4).Value = item.With;
                     rowObj.Cell(5).Value = item.To;
+                    rowObj.Cell(6).Value = item.Count;
                     
                 }
-
-                var rowo = worksheet.Row(2);
-                rowo.Cell(7).Value = result.Count;
-
+                
+                worksheet.Cell("H2").FormulaA1 = $"=SUM($F$2:$F${row})";
+                worksheet.Cell("G2").FormulaA1 = $"=COUNTIF($F$2:$F${row};\"0\")";
                 var cd = new System.Net.Mime.ContentDisposition
                 {
-                    FileName = "Items.xlsx",
+                    FileName = "Course.xlsx",
                     Inline = false,
                 };
                 Response.Headers.Add("Content-Disposition", cd.ToString());
@@ -131,5 +126,6 @@ namespace WebApplication
                 }
             }   
         }
+        
     }
 }

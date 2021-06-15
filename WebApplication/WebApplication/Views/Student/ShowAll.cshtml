@@ -1,4 +1,4 @@
-@using Model
+@model WebApplication.Utils.PaginatedList<Model.StudentModel>
 
 @{
     ViewData["Title"] = "Student";
@@ -11,7 +11,7 @@
         <label for="name_student" class="sr-only" >Name of student</label>
         <input type="text" class="form-control" id="name_student" name = "name" placeholder="Name">
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Добавить студента</button>
+    <button type="submit" class="btn btn-primary mb-2">Add student</button>
 </form>
 
 <div id="editor" class="form-inline">
@@ -20,20 +20,18 @@
         <label for="new_name" class="sr-only" >Name of student</label>
         <input type="text" class="form-control" id="new_name" name = "new_name" placeholder="Name">
     </div>
-    <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Изменить имя студента</button>
+    <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Change student</button>
     <label class="sr-only"  id = "status"></label>
 </div>
 </div>
-@if (ViewData["Students"] != null)
-{
-    <table id="table" class="text-center table table-striped">
+<table id="table" class="text-center table table-striped">
         <thead class="thead-light">
         <th scope="col">№</th>
         <th scope="col">Name</th>
         <th scope="col">Action</th>
         </thead>
         <tbody>
-        @foreach (var item in ViewData["Students"] as LinkedList<StudentModel>)
+        @foreach (var item in Model)
         {
             i++;
             <tr>
@@ -56,15 +54,29 @@
                         Courses
                     </a>
                     <a href="~/Student/ShowSessionMarksOfStudent/@item.Id" class="fill-modal btn btn-outline-primary">
-                                            Sesion Marks
-                                        </a>
+                        Sesion Marks
+                    </a>
 
                 </td>
             </tr>
         }
         </tbody>
     </table>
-}
+
+    @{
+        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    }
+<a asp-action="ShowAll"
+    asp-route-page="@(Model.PageIndex-1)"
+class="btn btn-default @prevDisabled">
+      Pervios
+      </a>
+      <a asp-action="ShowAll"
+    asp-route-page="@(Model.PageIndex+1)"
+class="btn btn-default @nextDisabled">
+      Next
+      </a>
 <script>
 document.getElementById('editor').style.display = "none";
 var index = -1;

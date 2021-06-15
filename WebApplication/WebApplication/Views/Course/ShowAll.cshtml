@@ -1,5 +1,5 @@
 @using Model
-@model List<Model.InformationAboutCourseModel>
+@model WebApplication.Utils.PaginatedList<InformationAboutCourseModel>
 
 @{
     ViewData["Title"] = "Lecturer";
@@ -50,10 +50,10 @@
         <br>
         <div class="form-inline">
             <label for="ExperienceUp"> Experience Down </label>
-            <input type="number" id="ExperienceDown" name="ExperienceDown" min="1" max="90" minlength="1" maxlength="3" size="10" value="@ViewData["expDown"]">
+            <input type="number" id="ExperienceDown" name="ExperienceDown" min="0" max="90" minlength="1" maxlength="3" size="10" value="@ViewData["expDown"]">
 
             <label for="ExperienceUp"> Experience Up </label>
-            <input type="number" id="ExperienceUp" name="ExperienceUp" min="1" max="90"  minlength="1" maxlength="3" size="10" value="@ViewData["expUp"]">
+            <input type="number" id="ExperienceUp" name="ExperienceUp" min="0" max="90"  minlength="1" maxlength="3" size="10" value="@ViewData["expUp"]">
         </div>
         <button type="submit" class="btn btn-primary mb-2">Filter</button>
     </form>
@@ -66,6 +66,7 @@
     <th scope="col">Name of course</th>
     <th scope="col">Name of lecturer</th>
     <th scope="col">Between</th>
+    <th scope="col">Count students</th>
     <th scope="col">Action</th>
     </thead>
     <tbody>
@@ -74,7 +75,7 @@
         i++;
         <tr>
             <td>
-                @i
+                @(i  + (Model.PageIndex - 1) * Model.PageSize)
             </td>
             <td>
                 @item.Name
@@ -86,10 +87,9 @@
                 @item.With - @item.To
             </td>
             <td>
-                <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal"  data-target="#addingModal">
-                    Edit
-                </button>
-            
+                @item.Count
+            </td>
+            <td>
                 @*<button type="button" class="info-modal btn btn-outline-info" data-toggle="modal" value="" data-target="#infoModal">
                                         Details
                                     </button>*@
@@ -103,16 +103,43 @@
     }
     </tbody>
 </table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+}
+<a asp-action="ShowAll"
+   asp-route-IdSubject="@ViewData["select"]"
+   asp-route-With="@ViewData["with"]"
+   asp-route-To="@ViewData["to"]"
+   asp-route-ExperienceUp="@ViewData["expUp"]"
+   asp-route-ExperienceDown="@ViewData["expDown"]"
+   asp-route-Name="@ViewData["name"]"
+   asp-route-page="@(Model.PageIndex-1)"
+   class="btn btn-default @prevDisabled">
+    Pervios
+</a>
+<a asp-action="ShowAll"
+   asp-route-IdSubject="@ViewData["select"]"
+   asp-route-With="@ViewData["with"]"
+   asp-route-To="@ViewData["to"]"
+   asp-route-ExperienceUp="@ViewData["expUp"]"
+   asp-route-ExperienceDown="@ViewData["expDown"]"
+   asp-route-Name="@ViewData["name"]"
+   asp-route-page="@(Model.PageIndex+1)"
+   class="btn btn-default @nextDisabled">
+    Next
+</a>
+<br>
 <a asp-action="Download"
-       asp-route-IdSubject="@ViewData["select"]"
-       asp-route-With="@ViewData["with"]"
-       asp-route-To="@ViewData["to"]"
-       asp-route-ExperienceUp="@ViewData["expUp"]"
-       asp-route-ExperienceDown="@ViewData["expDown"]"
-       asp-route-Name="@ViewData["name"]"
-       class="btn btn-outline-primary">
-        Download As ExcelFile
-    </a>
+   asp-route-IdSubject="@ViewData["select"]"
+   asp-route-With="@ViewData["with"]"
+   asp-route-To="@ViewData["to"]"
+   asp-route-ExperienceUp="@ViewData["expUp"]"
+   asp-route-ExperienceDown="@ViewData["expDown"]"
+   asp-route-Name="@ViewData["name"]"
+   class="btn btn-outline-primary">
+    Download As ExcelFile
+</a>
 <script>
 
 </script>

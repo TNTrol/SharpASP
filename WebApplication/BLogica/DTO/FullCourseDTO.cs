@@ -13,5 +13,7 @@ namespace DTO
         public string Lecturer { get; set; }
         
         public int Experience { get; set; }
+
+        public int Count { get; set; }
     }
 }

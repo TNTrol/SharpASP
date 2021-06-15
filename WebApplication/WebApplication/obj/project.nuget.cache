@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MBxqpwX6+3ltGmmCbCKVdsDsdt+ogjmBgTr8phpQh312phofTOmR/uy9DA5R0geMWnIi5zqLkBWwN0MsGzI83g==",
+  "dgSpecHash": "mt1i5ROAzLFim19gLukOipnGGrjNRwPKrCFHhDm40VIfqbNc+8E45xunBoSoJoB6vkrGsDKduJ7XH887TfWixw==",
   "success": true,
   "projectFilePath": "/home/tntrol/RiderProjects/WebApplication/WebApplication/WebApplication.csproj",
   "expectedPackageFiles": [
+    "/home/tntrol/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/home/tntrol/.nuget/packages/closedxml/0.95.4/closedxml.0.95.4.nupkg.sha512",
     "/home/tntrol/.nuget/packages/documentformat.openxml/2.7.2/documentformat.openxml.2.7.2.nupkg.sha512",
     "/home/tntrol/.nuget/packages/entityframework.core/7.0.0-rc1-final/entityframework.core.7.0.0-rc1-final.nupkg.sha512",
@@ -73,7 +74,7 @@
     "/home/tntrol/.nuget/packages/system.net.sockets/4.3.0/system.net.sockets.4.3.0.nupkg.sha512",
     "/home/tntrol/.nuget/packages/system.objectmodel/4.3.0/system.objectmodel.4.3.0.nupkg.sha512",
     "/home/tntrol/.nuget/packages/system.reflection/4.3.0/system.reflection.4.3.0.nupkg.sha512",
-    "/home/tntrol/.nuget/packages/system.reflection.emit/4.3.0/system.reflection.emit.4.3.0.nupkg.sha512",
+    "/home/tntrol/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
     "/home/tntrol/.nuget/packages/system.reflection.emit.ilgeneration/4.3.0/system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "/home/tntrol/.nuget/packages/system.reflection.emit.lightweight/4.3.0/system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "/home/tntrol/.nuget/packages/system.reflection.extensions/4.3.0/system.reflection.extensions.4.3.0.nupkg.sha512",

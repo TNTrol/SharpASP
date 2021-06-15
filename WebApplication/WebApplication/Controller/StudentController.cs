@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using AutoMapper;
 using DTO;
 using Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Model;
+using WebApplication.Utils;
 
 namespace WebApplication
 {
@@ -13,24 +16,28 @@ namespace WebApplication
         private IStudentService _studentService;
         private IAdminService _adminService;
         private readonly ILogger<StudentController> _logger;
+        private readonly Mapper _mapper;
 
         public StudentController(IStudentService studentService, IAdminService adminService, ILogger<StudentController> logger)
         {
             _studentService = studentService;
             _adminService = adminService;
             _logger = logger;
+            var congig = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<StudentDTO, StudentModel>();
+                cfg.CreateMap<CourseDTO, CourseModel>();
+                cfg.CreateMap<SessionMarkDTO, SessionMarkModel>();
+                cfg.CreateMap<MarkDTO, MarkModel>();
+            });
+            _mapper = new Mapper(congig);
         }
         
-        public IActionResult ShowAll()
+        public IActionResult ShowAll(int page = 1, int size = 10)
         {
-            LinkedList<StudentModel> studentModels = new LinkedList<StudentModel>();
-            foreach (var student in _studentService.ShowAllStudents())
-            {
-                studentModels.AddLast(new StudentModel(){Id = student.Id, Name = student.Name});
-            }
             _logger.LogInformation("Show all students");
-            ViewData["Students"] = studentModels;
-            return View();
+            IList<StudentModel> st =  _mapper.Map<IList<StudentDTO>, List<StudentModel>>(_studentService.ShowAllStudents());
+            return View(PaginatedList<StudentModel>.CreateList(st.AsQueryable(), page, size));
         }
 
         public IActionResult ShowCourseOfStudent(int id)
@@ -38,14 +45,7 @@ namespace WebApplication
             var courses = _studentService.ShowAllCoursesOfStudent(id);
             if (courses == null || courses.Count == 0)
                 return Redirect("~/Student/ShowAll");
-            LinkedList<CourseModel> courseModels = new LinkedList<CourseModel>();
-            foreach (var course in courses)
-            {
-                courseModels.AddLast(new CourseModel()
-                    {Id = course.Id, Name = course.Name, NameLecturer = course.NameLecturer, IdStudent = id});
-            }
-            
-            return View(courseModels);
+            return View( _mapper.Map<IList<CourseDTO>, LinkedList<CourseModel>>(courses));
         }
 
         public IActionResult ShowSessionMarksOfStudent(int id)
@@ -53,28 +53,16 @@ namespace WebApplication
             var marks = _studentService.ShowSessionMarksIdStudent(id);
             if (marks == null)
                 return Redirect("~/Student/ShowAll");
-            LinkedList<SessionMarkModel> sessionMarkModels = new LinkedList<SessionMarkModel>();
-            foreach (var mark in marks)
-            {
-                sessionMarkModels.AddLast(new SessionMarkModel()
-                    {Id = mark.Id, Mark = mark.Mark, To = mark.To, With = mark.With, NameCourse = mark.NameCourse});
-            }
-            return View(sessionMarkModels);
+            return View( _mapper.Map<IList<SessionMarkDTO>, LinkedList<SessionMarkModel>>(marks));
         }
 
         public IActionResult ShowMarksOfStudentCourse(FollowStudentModel followStudentModel)
         {
-            FollowStudentDTO followingStudentDto = new FollowStudentDTO()
-                {IdCourse = followStudentModel.IdCourse, IdStudent = followStudentModel.IdStudent};
-            var marksDTO = _studentService.ShowMarksCourseByIdStudent(followingStudentDto);
-            if (marksDTO == null || marksDTO.Count == 0)
-                return Redirect($"~/Student/ShowCourseOfStudent/{followingStudentDto.IdStudent}");
-            LinkedList<MarkModel> marks = new LinkedList<MarkModel>();
-            foreach (var mark in marksDTO)
-            {
-                marks.AddLast(new MarkModel() {Mark = mark.Mark, Date = mark.Date});
-            }
-            return View(marks);
+            var marks = _studentService.ShowMarksCourseByIdStudent(new FollowStudentDTO()
+                {IdCourse = followStudentModel.IdCourse, IdStudent = followStudentModel.IdStudent});
+            if (marks == null || marks.Count == 0)
+                return Redirect($"~/Student/ShowCourseOfStudent/{followStudentModel.IdStudent}");
+            return View(_mapper.Map<IList<MarkDTO>, LinkedList<MarkModel>>(marks));
         }
 
         [HttpPost]

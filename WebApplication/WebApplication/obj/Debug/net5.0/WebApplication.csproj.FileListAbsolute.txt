@@ -63,3 +63,4 @@
 /home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/DocumentFormat.OpenXml.dll
 /home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/ExcelNumberFormat.dll
 /home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/System.IO.Packaging.dll
+/home/tntrol/RiderProjects/WebApplication/WebApplication/bin/Debug/net5.0/AutoMapper.dll

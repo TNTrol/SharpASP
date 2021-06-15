@@ -1,4 +1,4 @@
-@model LinkedList<Model.SubjectModel>
+@model WebApplication.Utils.PaginatedList<Model.SubjectModel>
 
 @{
     ViewData["Title"] = "Student";
@@ -10,7 +10,7 @@
             <label for="name" class="sr-only" >Name of subject</label>
             <input type="text" class="form-control" id="name" name = "name" placeholder="Name">
         </div>
-        <button type="submit" class="btn btn-primary mb-2">Добавить предмет</button>
+        <button type="submit" class="btn btn-primary mb-2">Add subject</button>
     </form>
     <div id="editor" class="form-inline">
     
@@ -18,7 +18,7 @@
             <label for="new_name" class="sr-only" >Name of subject</label>
             <input type="text" class="form-control" id="new_name" name = "new_name" placeholder="Name">
         </div>
-        <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Изменить имя предмета</button>
+        <button type="submit" class="btn btn-primary mb-2" onclick="send_post()">Change name subject</button>
         <label class="sr-only"  id = "status"></label>
     </div>
 </div>
@@ -26,6 +26,7 @@
         <thead class="thead-light">
         <th scope="col">№</th>
         <th scope="col">Name</th>
+        <th scope="col">Count of course</th>
         <th scope="col">Action</th>
         </thead>
         <tbody>
@@ -40,6 +41,9 @@
                     @item.Name
                 </td>
                 <td>
+                                    @item.Count
+                                </td>
+                <td>
                     <button type="button" class="fill-modal btn btn-outline-primary" data-toggle="modal" value="@item.Id" data-target="#addingModal" onclick="toggle(@i, @item.Id)">
                         Edit
                     </button>
@@ -49,6 +53,20 @@
         }
         </tbody>
     </table>
+        @{
+            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+        }
+    <a asp-action="ShowSubject"
+        asp-route-page="@(Model.PageIndex-1)"
+    class="btn btn-default @prevDisabled">
+          Pervios
+          </a>
+          <a asp-action="ShowSubject"
+        asp-route-page="@(Model.PageIndex+1)"
+    class="btn btn-default @nextDisabled">
+          Next
+          </a>
 <script>
 document.getElementById('editor').style.display = "none";
 var index = -1;
