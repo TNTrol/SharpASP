@@ -41,6 +41,7 @@ namespace WebApplication
             {
                 var list = new Filter(filterModel).GetResult(_courseService.ShowCourses());
                 courses = _mapper.Map<IList<FullCourseDTO>, List<InformationAboutCourseModel>>(list);
+                ViewData["sum"] = courses.Sum(c => c.Count);
             }
             else
             {
@@ -65,7 +66,7 @@ namespace WebApplication
             var list = new Filter(filterModel).GetResult(_courseService.ShowCourses());
             var subjects = _mapper.Map<IList<SubjectDTO>, List<SubjectModel>>(_adminService.ShowAllSubjects());
             var courses = _mapper.Map<IList<FullCourseDTO>, List<InformationAboutCourseModel>>(list);
-            
+            int a = courses.Sum(c=> c.Count);
             ViewData["expUp"] = filterModel.ExperienceUp;
             ViewData["expDown"] = filterModel.ExperienceDown;
             ViewData["to"] = filterModel.To;
@@ -73,6 +74,7 @@ namespace WebApplication
             ViewData["subject"] = subjects;
             ViewData["name"] = filterModel.Name;
             ViewData["select"] = filterModel.IdSubject;
+            ViewData["sum"] = a;
             return View("ShowAll", PaginatedList<InformationAboutCourseModel>.CreateList(courses.AsQueryable(), page, size));
         }
 

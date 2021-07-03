@@ -59,7 +59,10 @@
     </form>
 </div>
 
-
+@if (ViewData["sum"] != null)
+{
+    <label>Кол-во студентов занимающихся @ViewData["sum"] </label>
+}
 <table id="table" class="text-center table table-striped">
     <thead class="thead-light">
     <th scope="col">№</th>
@@ -95,7 +98,7 @@
                                     </button>*@
             
                 <a href="~/Lecturer/ShowCourseOfLecture/" class="btn btn-outline-danger">
-                    Courses
+                    Students
                 </a>
 
             </td>

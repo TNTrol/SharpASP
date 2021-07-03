@@ -714,3 +714,50 @@ Now listening on: http://localhost:5000
 Application started. Press Ctrl+C to shut down.
 Hosting environment: Development
 Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Show all students
+Using developer exception page
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+Application started. Press Ctrl+C to shut down.
+Hosting environment: Development
+Content root path: /home/tntrol/RiderProjects/WebApplication/WebApplication
+Show all students
+Showing all subjects
+Showing all semesters
+Show all students
+Show all students
+Show all course of lecturer 1
+Show all course of lecturer 1
+Show all student folowing on course 1
+Saving xlsx file of information about courses
